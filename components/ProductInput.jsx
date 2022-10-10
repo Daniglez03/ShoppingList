@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Button, TextInput, View, StyleSheet } from 'react-native'
 const ProductInput = () => {
     const [productName, setProductName] = useState('');
@@ -21,6 +21,7 @@ const ProductInput = () => {
 
 const styles = StyleSheet.create({
     productInput: {
+        marginTop: 30,
         flexDirection: 'row',
         justifyContent: 'space-around',
         backgroundColor: "#eef4ed",
@@ -28,10 +29,12 @@ const styles = StyleSheet.create({
         height: 80,
         borderRadius: 5,
         padding: 10,
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: '#d81b60'
     },
     productName: {
         flex: 4,
+        color: 'white',
     },
     addButton: {
         flex: 1,
