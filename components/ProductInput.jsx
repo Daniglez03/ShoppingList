@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Button, TextInput, View, StyleSheet } from 'react-native'
+
 const ProductInput = () => {
     const [productName, setProductName] = useState('');
 
@@ -40,4 +41,4 @@ const styles = StyleSheet.create({
         flex: 1,
     },
 })
-export default ProductInput
+export default ProductInput;
