@@ -1,20 +1,26 @@
 import { useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, ScrollView, View, Text } from 'react-native';
 import ListItem from './components/ListItem';
 import ProductInput from './components/ProductInput';
 
 export default function App() {
-  const [products, setProducts] = useState(['Agua mineral', 'Berenjenas', 'Chetos', 'Plátanos']);
+  const [products, setProducts] = useState([
+
+  ]);
+
+  const addProductHandler = (productName) => {
+    setProducts(() => [...products, productName])
+  }
   return (
     <View style={styles.container}>
-      <ProductInput />
-      <View style={styles.productList}>
+      <ProductInput onProductAdd={addProductHandler}/>
+      <ScrollView style={styles.productList}>
         {
           products.length === 0 
             ? <Text style={styles.textEmpty}>Aún no hay productos</Text> 
             : products.map((product, idx) => (<ListItem key={idx + product} productName={product} />))
         }
-      </View>
+      </ScrollView>
     </View>
   );
 }
@@ -29,9 +35,10 @@ const styles = StyleSheet.create({
   productList: {
     flex: 4,
     width: '95%',
+    marginBottom: '5%'
   },
   textEmpty: {
     textAlign: 'center',
     marginTop: '5%',
-  }
+  },
 });

@@ -1,12 +1,19 @@
 import { useState } from 'react'
 import { Button, TextInput, View, StyleSheet } from 'react-native'
 
-const ProductInput = () => {
+const ProductInput = ({onProductAdd}) => {
     const [productName, setProductName] = useState('');
 
     const changeTextHandler = (value) => {
-        console.log(value);
         setProductName(value)
+    }
+    const addProductHandler = () => {
+        const sanitizedName = productName.trim()
+        if (sanitizedName != '') {
+            onProductAdd(productName)
+        setProductName('')
+        }
+        setProductName('')
     }
     return (
         <View style={ styles.productInput }>
@@ -15,7 +22,8 @@ const ProductInput = () => {
             keyboardType='default' 
             onChangeText={ changeTextHandler }
             value={ productName }/>
-            <Button style={ styles.addButton } title='Añadir' />
+            <Button style={ styles.addButton } title='Añadir' 
+            onPress={addProductHandler}/>
         </View>
     )
 }
