@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   },
   productList: {
     flex: 4,
-    width: '95%',
+    width: '90%',
     marginBottom: '3%',
     marginTop: '3%',
   },

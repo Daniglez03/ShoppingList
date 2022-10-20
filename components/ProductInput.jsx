@@ -30,11 +30,11 @@ const ProductInput = ({onProductAdd}) => {
 
 const styles = StyleSheet.create({
     productInput: {
-        marginTop: 30,
+        marginTop: 40,
         flexDirection: 'row',
         justifyContent: 'space-around',
         backgroundColor: "#eef4ed",
-        width: '80%',
+        width: '90%',
         height: 80,
         borderRadius: 5,
         padding: 10,
