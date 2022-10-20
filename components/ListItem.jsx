@@ -1,11 +1,13 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 
-const ListItem = ({ productName }) => {
+const ListItem = ({ productName, onProductRemove }) => {
     return (
-        <View style={styles.listItem}>
-            <Image style={styles.productImage} source={require('../assets/botella.webp')} />
-            <Text style={styles.productName}>{productName}</Text>
-        </View>
+        <Pressable onPress={() => onProductRemove(productName)}>
+            <View style={styles.listItem}>
+                <Image style={styles.productImage} source={require('../assets/botella.webp')} />
+                <Text style={styles.productName}>{productName}</Text>
+            </View>
+        </Pressable>
     )
 
 }
@@ -19,7 +21,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         borderRadius: 15,
         paddingRight: 20,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
     },
     productImage: {
         width: 70,
@@ -28,7 +30,8 @@ const styles = StyleSheet.create({
     productName: {
         fontSize: 20,
         fontWeight: 'bold',
-        textAlign: 'left'
+        textAlign: 'left',
+        //textDecorationLine: "line-through",
     },
 })
 

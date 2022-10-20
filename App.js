@@ -4,12 +4,16 @@ import ListItem from './components/ListItem';
 import ProductInput from './components/ProductInput';
 
 export default function App() {
-  const [products, setProducts] = useState([
-
-  ]);
+  const [products, setProducts] = useState([]);
 
   const addProductHandler = (productName) => {
     setProducts(() => [...products, productName])
+  }
+
+  const removeProductHandler = (productName) => {
+    setProducts(() => products.filter((product) => 
+    product != productName
+    ));
   }
   return (
     <View style={styles.container}>
@@ -18,7 +22,12 @@ export default function App() {
         {
           products.length === 0 
             ? <Text style={styles.textEmpty}>Aún no hay productos</Text> 
-            : products.map((product, idx) => (<ListItem key={idx + product} productName={product} />))
+            : products.map((product, idx) => (
+            <ListItem 
+            key={idx + product} 
+            productName={product}
+            onProductRemove={removeProductHandler}/>
+            ))
         }
       </ScrollView>
     </View>
@@ -35,7 +44,8 @@ const styles = StyleSheet.create({
   productList: {
     flex: 4,
     width: '95%',
-    marginBottom: '5%'
+    marginBottom: '3%',
+    marginTop: '3%',
   },
   textEmpty: {
     textAlign: 'center',
